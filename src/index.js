@@ -46,6 +46,37 @@ function updateTime() {
 
 function updateCity(event) {
   let cityTimeZone = event.target.value;
+
+  // Se o valor selecionado for vazio, restaura o conteúdo original
+  if (cityTimeZone === "") {
+    document.querySelector("#cities").innerHTML = `
+      <div class="city" id="current-location">
+        <div>
+          <h2 id="current-city-name"></h2>
+          <div class="date"></div>
+        </div>
+        <div class="time"></div>
+      </div>
+      <div class="city" id="los-angeles">
+        <div>
+          <h2>Los Angeles</h2>
+          <div class="date"></div>
+        </div>
+        <div class="time"></div>
+      </div>
+      <div class="city" id="paris">
+        <div>
+          <h2>Paris</h2>
+          <div class="date"></div>
+        </div>
+        <div class="time"></div>
+      </div>
+    `;
+    // Re-aplicar a função updateTime após restaurar o conteúdo original
+    updateTime();
+    return;
+  }
+
   if (cityTimeZone === "current") {
     cityTimeZone = moment.tz.guess();
   }
