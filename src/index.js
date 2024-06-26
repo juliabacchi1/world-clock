@@ -1,7 +1,11 @@
+var city = "";
 function updateTime() {
   // Current Location
   let currentLocationElement = document.querySelector("#current-location");
-  if (currentLocationElement.style.display !== "none") {
+  if (
+    !!currentLocationElement &&
+    currentLocationElement.style.display !== "none"
+  ) {
     let currentCityNameElement = document.querySelector("#current-city-name");
     let currentCityDateElement = currentLocationElement.querySelector(".date");
     let currentCityTimeElement = currentLocationElement.querySelector(".time");
@@ -47,9 +51,11 @@ function updateTime() {
     );
   }
 }
-
-function updateCity(event) {
-  let cityTimeZone = event.target.value;
+function getCity(event) {
+  city = event.target.value;
+}
+function updateCity() {
+  let cityTimeZone = city;
 
   // Se o valor selecionado for vazio, restaura o conteúdo original
   if (cityTimeZone === "") {
@@ -76,11 +82,12 @@ function updateCity(event) {
         <div class="time"></div>
       </div>
     `;
-    // Re-aplicar a função updateTime após restaurar o conteúdo original
+    // Reaplicar a função updateTime após restaurar o conteúdo original
     updateTime();
     return;
   }
 
+  // Se o valor selecionado for a current location, realiza a busca do local
   if (cityTimeZone === "current") {
     cityTimeZone = moment.tz.guess();
   }
@@ -101,8 +108,7 @@ function updateCity(event) {
   `;
 }
 
-updateTime();
-setInterval(updateTime, 1000);
+setInterval(updateCity, 1000);
 
 let citiesSelectElement = document.querySelector("#city");
-citiesSelectElement.addEventListener("change", updateCity);
+citiesSelectElement.addEventListener("change", getCity);

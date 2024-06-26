@@ -1,11 +1,10 @@
 body {
-  background-color: #f9f7fe;
-  font-family: sans-serif;
+  background-color: #f1f1f1;
+  font-family: "Raleway", sans-serif;
 }
 
 h1 {
   text-align: center;
-  font-family: sans-serif;
   font-size: 36px;
 }
 
@@ -17,9 +16,11 @@ h2 {
 select {
   display: block;
   width: 100%;
-  font-size: 18px;
+  font-size: 15px;
+  opacity: 0.7;
   border-radius: 4px;
   padding: 10px;
+  font-family: "Raleway", sans-serif;
 }
 
 span {
@@ -42,11 +43,11 @@ a.info {
 
 .container {
   max-width: 600px;
-  margin: 60px auto;
+  margin: 10px auto;
   background: white;
   padding: 30px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 10px;
+  background-color: #f1f1f1;
 }
 
 .city {
@@ -64,11 +65,13 @@ a.info {
 .date {
   opacity: 0.7;
   font-size: 14px;
+  font-family: "Raleway", sans-serif;
 }
 
 .time {
   font-size: 48px;
   font-weight: bold;
+  font-family: sans-serif;
 }
 
 .time small {
@@ -77,10 +80,12 @@ a.info {
   opacity: 0.7;
   vertical-align: middle;
   line-height: 48px;
+  font-family: "Raleway", sans-serif;
 }
 
 footer {
   text-align: center;
-  font-size: 14px;
+  font-size: 13px;
   color: rgba(0, 0, 0, 0.8);
+  padding: 30px;
 }
