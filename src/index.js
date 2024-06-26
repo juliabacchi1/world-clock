@@ -1,4 +1,22 @@
 function updateTime() {
+  // Current Location
+  let currentLocationElement = document.querySelector("#current-location");
+  if (currentLocationElement.style.display !== "none") {
+    let currentCityNameElement = document.querySelector("#current-city-name");
+    let currentCityDateElement = currentLocationElement.querySelector(".date");
+    let currentCityTimeElement = currentLocationElement.querySelector(".time");
+    let currentCityTimeZone = moment.tz.guess();
+    let currentCityTime = moment().tz(currentCityTimeZone);
+
+    currentCityNameElement.innerHTML = currentCityTimeZone
+      .replace("_", " ")
+      .split("/")[1];
+    currentCityDateElement.innerHTML = currentCityTime.format("MMMM Do YYYY");
+    currentCityTimeElement.innerHTML = currentCityTime.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
+
   // Los Angeles
   let losAngelesElement = document.querySelector("#los-angeles");
   if (losAngelesElement) {
@@ -44,7 +62,7 @@ function updateCity(event) {
     "A"
   )}</small></div>
   </div>
-  <a href="/">All cities</a>
+  <a href="index.html">All cities</a>
   `;
 }
 
